@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Matching Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        .link-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .start-link, .abouthecreators-link, .instructions-link {
+            display: block; /* Use block-level display to have them appear on separate lines */
+            padding: 10px 20px;
+            margin: 5px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="link-container">
+        <a href="option.html" class="start-link">
+            Start
+        </a>
+        <br> <!-- Force a line break -->
+        <a href="creators.html" class="abouthecreators-link" onclick="aboutthecreators()">
+            The Creators
+        </a>
+        <br> <!-- Force a line break -->
+        <a href="instructions.html" class="instructions-link">
+            Instructions
+        </a>
+    </div>
+
+    <script>
+        function aboutthecreators() {
+            window.location.href = "creators.html";
+        }
+    </script>
+</body>
+
+</html>

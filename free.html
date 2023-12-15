@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Memory Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* 100% of the viewport height */
+        }
+
+        .reset,
+        .return {
+            margin-top: 10px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .reset {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .reset:hover {
+            background-color: #45a049;
+        }
+
+        .return {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .return:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Memory Game</h2>
+        <div class="game"></div>
+        <button class="reset" onclick="window.location.reload();">Reset Game</button>
+        <button class="return" onclick="returnToMenu();">Return to Menu</button>
+    </div>
+    <script>
+        const emojis = ["🐯", "🐯", "🐭", "🐭", "🐖", "🐖", "🦞", "🦞", "🐸", "🐸", "🐨", "🐨", "🐼", "🐼", "🦓", "🦓", "🦥", "🦥", "🪰", "🪰", "🐞", "🐞", "🦟", "🦟"];
+        var shuf_emojis = emojis.sort(() => Math.random() - 0.5);
+        var selectedCards = [];
+
+        for (var i = 0; i < emojis.length; i++) {
+            let box = document.createElement('div');
+            box.className = 'item';
+            box.innerHTML = shuf_emojis[i];
+
+            box.onclick = function () {
+                if (!this.classList.contains('boxOpen') && selectedCards.length < 2) {
+                    this.classList.add('boxOpen');
+                    selectedCards.push(this);
+
+                    if (selectedCards.length === 2) {
+                        setTimeout(checkMatch, 500);
+                    }
+                }
+            }
+
+            document.querySelector('.game').appendChild(box);
+        }
+
+        function checkMatch() {
+            if (selectedCards[0].innerHTML === selectedCards[1].innerHTML) {
+                selectedCards.forEach(card => card.classList.add('boxMatch'));
+                selectedCards = [];
+                if (document.querySelectorAll('.boxMatch').length === emojis.length) {
+                    alert('You win!');
+                }
+            } else {
+                selectedCards.forEach(card => card.classList.remove('boxOpen'));
+                selectedCards = [];
+            }
+        }
+
+        function returnToMenu() {
+            window.location.href = "option.html"; // Replace "menu.html" with the actual path or URL of your menu page
+        }
+    </script>
+</body>
+</html>

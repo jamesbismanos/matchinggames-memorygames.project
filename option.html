@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Matching Game Menu</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .menu {
+            text-align: center;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .return-home-button {
+            display: block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .return-home-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <h2>Matching Game Menu</h2>
+        <button class="button" onclick="startGame('timed')">Timed Game</button>
+        <button class="button" onclick="startGame('free')">Free Game</button>
+
+        <a href="home.html" class="return-home-button">
+            Return Home
+        </a>
+    </div>
+
+    <script>
+        function startGame(gameType) {
+            if (gameType === 'timed') {
+                // Redirect to the timed game page or trigger timed game logic
+                window.location.href = 'timed.html'; // Change to the actual filename
+            } else if (gameType === 'free') {
+                // Redirect to the free game page or trigger free game logic
+                window.location.href = 'free.html'; // Change to the actual filename
+            }
+        }
+    </script>
+</body>
+</html>
